@@ -369,19 +369,16 @@ function getSecondItems(...rest) {
  *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
-function propagateItemsByPositionIndex() {
-  // const result = [];
-  // let i = 1;
-  // rest[0].map((x) => {
-  //   const newX = x;
-  //   if (i % 2 === 0) {
-  //     result.push(newX);
-  //   }
-  //   i += 1;
-  //   return newX;
-  // });
-  // return result;
-  throw new Error('Not implemented');
+function propagateItemsByPositionIndex(...rest) {
+  let result = [];
+  rest[0].map((el, index) => {
+    const el2 = el;
+    const arr = Array.from({ length: index + 1 }).fill(el2);
+    result = result.concat(arr);
+    return el2;
+  });
+  return result;
+  // throw new Error('Not implemented');
 }
 
 
@@ -615,8 +612,20 @@ function getIdentityMatrix(/* n */) {
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(...rest) {
+  const length = Math.abs(rest[0] - rest[1]) + 1;
+  let item = rest[0];
+  const arr = [];
+  arr.length = length;
+  arr.fill(0);
+  const result = arr.map((x) => {
+    let x2 = x;
+    x2 = item;
+    item += 1;
+    return x2;
+  });
+  return result;
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -691,7 +700,22 @@ function group(/* array, keySelector, valueSelector */) {
  *   [[1, 2], [3, 4], [5, 6]], (x) => x     =>   [ 1, 2, 3, 4, 5, 6 ]
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
-function selectMany(/* arr, childrenSelector */) {
+function selectMany() {
+  // let result = [];
+  // rest[0].map((item) => {
+  //   const item2 = item;
+  //   if (Array.isArray(item2)) {
+  //     item2.map((key) => {
+  //       const key2 = key;
+  //       result.push(key2);
+  //       return key2;
+  //     });
+  //   } else {
+  //     result = `${result}${item}`;
+  //   }
+  //   return item2;
+  // });
+  // return rest[1](result);
   throw new Error('Not implemented');
 }
 

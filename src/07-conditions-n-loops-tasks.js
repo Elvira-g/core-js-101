@@ -300,8 +300,48 @@ function reverseInteger(...rest) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber(/* ccn */) {
-  throw new Error('Not implemented');
+function isCreditCardNumber(...rest) {
+  const res1 = [];
+  let res2 = 0;
+  let result = false;
+  const restArr = rest.toString().split('');
+  if (restArr.length % 2 === 0) {
+    for (let i = 0; i < restArr.length; i += 1) {
+      if (i % 2 === 0) {
+        const item = parseInt(restArr[i], 10) * 2;
+        if (item > 9) {
+          res1.push(item - 9);
+        } else {
+          res1.push(item);
+        }
+      } else {
+        res1.push(parseInt(restArr[i], 10));
+      }
+    }
+  } else {
+    for (let i = 0; i < restArr.length; i += 1) {
+      if (i % 2 !== 0) {
+        const item = parseInt(restArr[i], 10) * 2;
+        if (item > 9) {
+          res1.push(item - 9);
+        } else {
+          res1.push(item);
+        }
+      } else {
+        res1.push(parseInt(restArr[i], 10));
+      }
+    }
+  }
+  for (let i = 0; i < res1.length; i += 1) {
+    res2 += res1[i];
+  }
+  if (res2 % 10 === 0) {
+    result = true;
+  } else {
+    result = false;
+  }
+  return result;
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -353,7 +393,18 @@ function getDigitalRoot(...rest) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
+function isBracketsBalanced() {
+  // const openBrackets = [];
+  // let result = false;
+  // const arr = rest[0];
+  // if (arr.length === 0) {
+  //   result = true;
+  // } else {
+  //   const check = [];
+  //   for (let i = 0; i < arr.length; i +=1) {
+  //     if (check.includes)
+  //   }
+  // }
   throw new Error('Not implemented');
 }
 
