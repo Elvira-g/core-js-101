@@ -19,8 +19,9 @@
  *   5, 10 => 50
  *   5, 5  => 25
  */
-function getRectangleArea(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleArea(...rest) {
+  return rest[0] * rest[1];
+  // throw new Error('Not implemented');
 }
 
 
@@ -35,8 +36,8 @@ function getRectangleArea(/* width, height */) {
  *   3.14 => 19.729201864543903
  *   0    => 0
  */
-function getCircleCircumference(/* radius */) {
-  throw new Error('Not implemented');
+function getCircleCircumference(...rest) {
+  return 2 * Math.PI * rest[0];
 }
 
 /**
@@ -51,8 +52,14 @@ function getCircleCircumference(/* radius */) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function getAverage(...rest) {
+  let result = 0;
+  result = (rest[0] + rest[1]) / 2;
+  if (result === Infinity) {
+    result = +1.7976931348623157e+308;
+  }
+  return result;
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -70,8 +77,14 @@ function getAverage(/* value1, value2 */) {
  *   (0,0) (1,0)    => 1
  *   (-5,0) (10,-10) => 18.027756377319946
  */
-function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getDistanceBetweenPoints(...rest) {
+  const x1 = rest[0];
+  const y1 = rest[1];
+  const x2 = rest[2];
+  const y2 = rest[3];
+  const result = Math.sqrt(Math.abs(((x2 - x1) ** 2) + ((y2 - y1) ** 2)));
+  return result;
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -86,8 +99,10 @@ function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot(/* a, b */) {
-  throw new Error('Not implemented');
+function getLinearEquationRoot(...rest) {
+  const x = -rest[1] / rest[0];
+  return x;
+  // throw new Error('Not implemented');
 }
 
 
@@ -125,8 +140,11 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
+function getLastDigit(...rest) {
+  const numString = rest[0].toString();
+  const result = numString.slice(numString.length - 1, numString.length);
+  return parseInt(result, 10);
+  // throw new Error('Not implemented');
 }
 
 
@@ -141,8 +159,9 @@ function getLastDigit(/* value */) {
  *     '37'     => 37
  * '-525.5'     => -525.5
  */
-function parseNumberFromString(/* value */) {
-  throw new Error('Not implemented');
+function parseNumberFromString(...rest) {
+  return Number(rest[0]);
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -158,8 +177,13 @@ function parseNumberFromString(/* value */) {
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelepipedDiagonal(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getParallelepipedDiagonal(...rest) {
+  const a = (rest[0] ** 2);
+  const b = (rest[1] ** 2);
+  const c = (rest[2] ** 2);
+  const result = Math.sqrt(a + b + c);
+  return result;
+  // throw new Error('Not implemented');
 }
 
 
@@ -180,7 +204,23 @@ function getParallelepipedDiagonal(/* a, b, c */) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(/* num, pow */) {
+function roundToPowerOfTen() {
+//   let result;
+//   if (rest[1] === 0) {
+//     result = rest[0];
+//   } else {
+//     const reverseNumArr = rest[0].toString().split('').reverse();
+//     let i = 0;
+//     if (reverseNumArr[rest[1]] >= 5) {
+//       reverseNumArr[rest[1]] = (parseInt(reverseNumArr[rest[1]], 10) + 1).toString();
+//     }
+//     while (i < rest[1]) {
+//     reverseNumArr[i] = 0;
+//       i += 1;
+//     }
+//     result = Number(reverseNumArr.reverse().join(''));
+//   }
+//   return result;
   throw new Error('Not implemented');
 }
 
@@ -201,8 +241,24 @@ function roundToPowerOfTen(/* num, pow */) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(...rest) {
+  const sq = Math.sqrt(rest[0]);
+  let result = true;
+  if (rest[0] <= 1) {
+    result = false;
+  } else if (rest[0] === 2) {
+    result = true;
+  } else {
+    let i = 2;
+    while (i < (sq + 1)) {
+      if (rest[0] % i === 0) {
+        result = false;
+      }
+      i += 1;
+    }
+  }
+  return result;
+  // throw new Error('Not implemented');
 }
 
 /**
